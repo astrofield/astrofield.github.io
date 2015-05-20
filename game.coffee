@@ -4,7 +4,7 @@ MISSILE_SPEED = 30
 MISSILE_DELAY = 25
 MISSILE_BUFFER = 25
 ASTEROID_SPEED = 7
-ASTEROID_DELAY = 100
+ASTEROID_DELAY = 60
 ASTEROID_NUMBER = 10
 ASTEROID_INCREMENT = 5
 MISSILE_LIFE = 180
@@ -29,7 +29,7 @@ class Wrapper extends canvasGames.Sprite
             @x = canvasGames.screen.width - @width
 
 class Asteroid extends Wrapper
-    constructor: ->
+    constructor: (@ship) ->
         #TODO: [x]Implement bounds on randoms
         angle = Math.min(Math.max(Math.sqrt(-2*Math.log(Math.random()))*Math.cos(2*Math.PI*Math.random()), -.55), .55) * Math.PI/2 + 3 * Math.PI / 2 #TODO: [x]Change distribution to normal from uniform
         x = Math.random() * canvasGames.screen.width
@@ -41,6 +41,7 @@ class Asteroid extends Wrapper
     update: ->
         if @y > canvasGames.screen.height + @height
             @destroy()
+            @ship.lose_life()
 
         super
         
@@ -82,7 +83,10 @@ class Ship extends Wrapper
         
         @score = 0
         @score_ob = document.getElementById("score")
-    
+        
+        @life = 100
+        @life_ob = document.getElementById("life")
+
     update: ->
         #Check movement
         if canvasGames.keyboard.isPressed 37
@@ -111,7 +115,18 @@ class Ship extends Wrapper
         canvasGames.screen.addSprite new Missile(@x, @y+@height/2-MISSILE_BUFFER, @)
     
     add_asteroid: ->
-        canvasGames.screen.addSprite new Asteroid
+        canvasGames.screen.addSprite new Asteroid @
+
+    lose_life: ->
+        @life -= 5
+        if not @life
+            @destroy()
+            alert "Game Over! You got #{@score} points!"
+            if prompt "Play Again?"
+                document.location = "index.html"
+            else
+                window.close()
+        @life_ob.style.width = if @life>0 then @life * 2 else 0
 
 canvas = document.getElementById 'canvas'
 

@@ -17,7 +17,7 @@
 
   ASTEROID_SPEED = 7;
 
-  ASTEROID_DELAY = 100;
+  ASTEROID_DELAY = 60;
 
   ASTEROID_NUMBER = 10;
 
@@ -78,8 +78,9 @@
 
     __extends(Asteroid, _super);
 
-    function Asteroid() {
+    function Asteroid(ship) {
       var angle, dx, dy, x;
+      this.ship = ship;
       angle = Math.min(Math.max(Math.sqrt(-2 * Math.log(Math.random())) * Math.cos(2 * Math.PI * Math.random()), -.55), .55) * Math.PI / 2 + 3 * Math.PI / 2;
       x = Math.random() * canvasGames.screen.width;
       dx = Math.cos(angle) * ASTEROID_SPEED;
@@ -91,6 +92,7 @@
     Asteroid.prototype.update = function() {
       if (this.y > canvasGames.screen.height + this.height) {
         this.destroy();
+        this.ship.lose_life();
       }
       return Asteroid.__super__.update.apply(this, arguments);
     };
@@ -150,6 +152,8 @@
       this.level = 1;
       this.score = 0;
       this.score_ob = document.getElementById("score");
+      this.life = 100;
+      this.life_ob = document.getElementById("life");
     }
 
     Ship.prototype.update = function() {
@@ -178,7 +182,21 @@
     };
 
     Ship.prototype.add_asteroid = function() {
-      return canvasGames.screen.addSprite(new Asteroid);
+      return canvasGames.screen.addSprite(new Asteroid(this));
+    };
+
+    Ship.prototype.lose_life = function() {
+      this.life -= 5;
+      if (!this.life) {
+        this.destroy();
+        alert("Game Over! You got " + this.score + " points!");
+        if (prompt("Play Again?")) {
+          document.location = "index.html";
+        } else {
+          window.close();
+        }
+      }
+      return this.life_ob.style.width = this.life > 0 ? this.life * 2 : 0;
     };
 
     return Ship;
