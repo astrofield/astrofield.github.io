@@ -190,7 +190,7 @@
       if (!this.life) {
         this.destroy();
         alert("Game Over! You got " + this.score + " points!");
-        if (prompt("Play Again?")) {
+        if (confirm("Play Again?")) {
           document.location = "index.html";
         } else {
           window.close();

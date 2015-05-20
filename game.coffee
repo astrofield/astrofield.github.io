@@ -122,7 +122,7 @@ class Ship extends Wrapper
         if not @life
             @destroy()
             alert "Game Over! You got #{@score} points!"
-            if prompt "Play Again?"
+            if confirm "Play Again?"
                 document.location = "index.html"
             else
                 window.close()
