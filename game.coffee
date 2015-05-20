@@ -64,7 +64,8 @@ class Missile extends Wrapper
                 @ship.score_ob.innerHTML = "Score: " + @ship.score
                 @ship.asteroid_count--
                 if not @ship.asteroid_count
-                    @ship.new_level()
+                     @ship.new_level()
+                     5
                 return
         
         if not @life
