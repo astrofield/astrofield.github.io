@@ -124,7 +124,6 @@
           this.ship.score_ob.innerHTML = "Score: " + this.ship.score;
           this.ship.asteroid_count--;
           if (!this.ship.asteroid_count) {
-            this.ship.new_level();
             5;
 
           }
