@@ -5,7 +5,7 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
     __slice = [].slice;
 
-  SHIP_SPEED = 25;
+  SHIP_SPEED = 15;
 
   SCORE_INCREMENT = 5;
 
@@ -15,7 +15,7 @@
 
   MISSILE_BUFFER = 25;
 
-  ASTEROID_SPEED = 15;
+  ASTEROID_SPEED = 10;
 
   ASTEROID_DELAY = 100;
 
