@@ -90,7 +90,7 @@
     }
 
     Asteroid.prototype.update = function() {
-      if (this.y > canvasGames.screen.height + this.height) {
+      if (this.y > canvasGames.screen.height + this.height / 2) {
         this.destroy();
         this.ship.lose_life();
       }

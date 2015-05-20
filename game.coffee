@@ -39,7 +39,7 @@ class Asteroid extends Wrapper
         @y = -@height
     
     update: ->
-        if @y > canvasGames.screen.height + @height
+        if @y > canvasGames.screen.height + @height/2
             @destroy()
             @ship.lose_life()
 
