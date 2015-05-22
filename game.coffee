@@ -79,7 +79,7 @@ class Ship extends Wrapper
         @asteroid_count = 0
 
         @level = 0
-        @first_asteroid = True
+        @first_asteroid = false
         @level_ob = document.getElementById("level")
 
         @score = 0

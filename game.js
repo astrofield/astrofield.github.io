@@ -149,7 +149,7 @@
       this.asteroid_wait = LEVEL_DELAY;
       this.asteroid_count = 0;
       this.level = 0;
-      this.first_asteroid = True;
+      this.first_asteroid = false;
       this.level_ob = document.getElementById("level");
       this.score = 0;
       this.score_ob = document.getElementById("score");
