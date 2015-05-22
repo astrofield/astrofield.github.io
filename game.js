@@ -100,20 +100,23 @@
     };
 
     Asteroid.prototype.explode = function() {
-      var i, _i, _len, _ref, _results;
       this.destroy();
       canvasGames.screen.addSprite(new Explosion(this.x, this.y));
       EXPLOSION_SOUND.currentTime = 0;
-      EXPLOSION_SOUND.play();
+      return EXPLOSION_SOUND.play();
+    };
+
+    Asteroid.prototype.destroy = function() {
+      var i, _i, _len, _ref;
       _ref = this.ship.asteroids;
-      _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         i = _ref[_i];
         if (i !== this) {
-          _results.push(this.ship.asteroids = i);
+          this.ship.asteroids = i;
         }
       }
-      return _results;
+      console.log(this.ship.asteroids);
+      return Asteroid.__super__.destroy.apply(this, arguments);
     };
 
     return Asteroid;

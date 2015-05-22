@@ -51,7 +51,11 @@ class Asteroid extends Wrapper
         canvasGames.screen.addSprite(new Explosion @x, @y)
         EXPLOSION_SOUND.currentTime = 0
         EXPLOSION_SOUND.play()
+
+    destroy: -> 
         @ship.asteroids = i for i in @ship.asteroids when i isnt @
+        console.log @ship.asteroids
+        super
 
 class Missile extends Wrapper
     constructor: (x, y, @ship) ->
