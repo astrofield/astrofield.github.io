@@ -5,7 +5,7 @@ MISSILE_DELAY = 25
 MISSILE_BUFFER = 25
 ASTEROID_SPEED = 7
 ASTEROID_DELAY = 60
-LEVEL_DELAY = 250
+LEVEL_DELAY = 150
 ASTEROID_NUMBER = 5
 ASTEROID_INCREMENT = 5
 MISSILE_LIFE = 180
@@ -61,6 +61,7 @@ class Missile extends Wrapper
                 @destroy()
                 sprite.destroy()
                 canvasGames.screen.addSprite(new Explosion @x, @y)
+                EXPLOSION_SOUND.currentTime = 0
                 EXPLOSION_SOUND.play()
                 @ship.score += SCORE_INCREMENT
                 @ship.score_ob.innerHTML = "Score: " + @ship.score

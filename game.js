@@ -19,7 +19,7 @@
 
   ASTEROID_DELAY = 60;
 
-  LEVEL_DELAY = 250;
+  LEVEL_DELAY = 150;
 
   ASTEROID_NUMBER = 5;
 
@@ -123,6 +123,7 @@
           this.destroy();
           sprite.destroy();
           canvasGames.screen.addSprite(new Explosion(this.x, this.y));
+          EXPLOSION_SOUND.currentTime = 0;
           EXPLOSION_SOUND.play();
           this.ship.score += SCORE_INCREMENT;
           this.ship.score_ob.innerHTML = "Score: " + this.ship.score;
