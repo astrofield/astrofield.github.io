@@ -100,10 +100,20 @@
     };
 
     Asteroid.prototype.explode = function() {
+      var i, _i, _len, _ref, _results;
       this.destroy();
       canvasGames.screen.addSprite(new Explosion(this.x, this.y));
       EXPLOSION_SOUND.currentTime = 0;
-      return EXPLOSION_SOUND.play();
+      EXPLOSION_SOUND.play();
+      _ref = this.ship.asteroids;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        i = _ref[_i];
+        if (i !== this) {
+          _results.push(this.ship.asteroids = i);
+        }
+      }
+      return _results;
     };
 
     return Asteroid;
@@ -210,7 +220,10 @@
     };
 
     Ship.prototype.add_asteroid = function() {
-      return canvasGames.screen.addSprite(new Asteroid(this));
+      var asteroid;
+      asteroid = new Asteroid(this);
+      canvasGames.screen.addSprite(asteroid);
+      return this.asteroids.push(asteroid);
     };
 
     Ship.prototype.lose_life = function() {

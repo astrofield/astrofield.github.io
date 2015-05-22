@@ -51,6 +51,7 @@ class Asteroid extends Wrapper
         canvasGames.screen.addSprite(new Explosion @x, @y)
         EXPLOSION_SOUND.currentTime = 0
         EXPLOSION_SOUND.play()
+        @ship.asteroids = i for i in @ship.asteroids when i isnt @
 
 class Missile extends Wrapper
     constructor: (x, y, @ship) ->
@@ -141,7 +142,9 @@ class Ship extends Wrapper
         canvasGames.screen.addSprite new Missile(@x, @y+@height/2-MISSILE_BUFFER, @)
     
     add_asteroid: ->
-        canvasGames.screen.addSprite new Asteroid @
+        asteroid = new Asteroid @
+        canvasGames.screen.addSprite asteroid
+        @asteroids.push(asteroid)
 
     lose_life: ->
         @life -= 5
