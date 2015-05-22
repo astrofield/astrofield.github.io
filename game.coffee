@@ -53,7 +53,7 @@ class Asteroid extends Wrapper
         EXPLOSION_SOUND.play()
 
     destroy: -> 
-        @ship.asteroids = [i for i in @ship.asteroids when i isnt @]
+        @ship.asteroids = (i for i in @ship.asteroids when i isnt @)
         super
 
 class Missile extends Wrapper

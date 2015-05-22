@@ -108,20 +108,18 @@
 
     Asteroid.prototype.destroy = function() {
       var i;
-      this.ship.asteroids = [
-        (function() {
-          var _i, _len, _ref, _results;
-          _ref = this.ship.asteroids;
-          _results = [];
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            i = _ref[_i];
-            if (i !== this) {
-              _results.push(i);
-            }
+      this.ship.asteroids = (function() {
+        var _i, _len, _ref, _results;
+        _ref = this.ship.asteroids;
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          i = _ref[_i];
+          if (i !== this) {
+            _results.push(i);
           }
-          return _results;
-        }).call(this)
-      ];
+        }
+        return _results;
+      }).call(this);
       return Asteroid.__super__.destroy.apply(this, arguments);
     };
 
