@@ -137,7 +137,7 @@ class Ship extends Wrapper
         @life_ob.style.width = if @life>0 then @life * 2 else 0
     
     new_level: ->
-        @level++
+        @level += 1
         @level_ob.style.display = "block"
         @level_ob.innerHTML = "Level " + @level
         ASTEROID_NUMBER += ASTEROID_INCREMENT
