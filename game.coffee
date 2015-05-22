@@ -54,6 +54,7 @@ class Asteroid extends Wrapper
 
     destroy: -> 
         @ship.asteroids = (i for i in @ship.asteroids when i isnt @)
+        console.log @ship.asteroids
         super
 
 class Missile extends Wrapper

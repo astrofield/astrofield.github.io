@@ -120,6 +120,7 @@
         }
         return _results;
       }).call(this);
+      console.log(this.ship.asteroids);
       return Asteroid.__super__.destroy.apply(this, arguments);
     };
 
