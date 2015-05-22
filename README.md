@@ -19,3 +19,4 @@ You have to protect the transports from the field of asteroids with your X-Wing 
 5. When an asteroid escapes the screen, you lose **5** health.
 6. When all health is lost, the game is over.
 7. The ship, asteroids, and missiles all wrap around the screen.
+8. The first level has 10 asteroids, the second 15, etc. and each level the game gets harder and faster.
