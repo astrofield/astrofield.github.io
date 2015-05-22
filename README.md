@@ -1,14 +1,14 @@
-#Astro-Rain
+#Astro-Field
 
 A simple arcade shooter.
 
-##What is Astro-Rain
+##What is Astro-Field
 
-Astro-Rain is a simple arcade shooter for VGA-102. It is written in [coffescript](http://coffeescript.org), a language which compiles to javascript.
+Astro-Field is a simple arcade shooter for VGA-102. It is written in [coffescript](http://coffeescript.org), a language which compiles to javascript.
 
 ##Instructions
 
-You have to protect the transports from the rain of asteroids with your X-Wing fighter.
+You have to protect the transports from the field of asteroids with your X-Wing fighter.
 
 1. You control the ship with the arrow keys.
 2. Go right and left.
