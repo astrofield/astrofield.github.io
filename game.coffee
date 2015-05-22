@@ -91,6 +91,11 @@ class Ship extends Wrapper
         @life = 100
         @life_ob = document.getElementById("life")
 
+        @nuke_counter = 0
+        @nuke_number = 3
+
+        @asteroids = []
+
     update: ->
         #Check movement
         if canvasGames.keyboard.isPressed 37
@@ -119,6 +124,16 @@ class Ship extends Wrapper
          if not @asteroid_count
              @new_level()
  
+         #Nuke check
+         @nuke_counter--
+
+         if canvasGames.keyboard.isPressed(13) and @nuke_counter <= 0 and @nuke_number
+             document.getElementById("nuke" + @nuke_number).style.display = "none"
+             for asteroid in @asteroids
+                 asteroid.explode()
+             @nuke_number--
+             @nuke_counter = 60
+
         super
     
     add_missile: ->

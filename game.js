@@ -160,9 +160,13 @@
       this.score_ob = document.getElementById("score");
       this.life = 100;
       this.life_ob = document.getElementById("life");
+      this.nuke_counter = 0;
+      this.nuke_number = 3;
+      this.asteroids = [];
     }
 
     Ship.prototype.update = function() {
+      var asteroid, _i, _len, _ref;
       if (canvasGames.keyboard.isPressed(37)) {
         this.x -= SHIP_SPEED;
       }
@@ -185,6 +189,17 @@
       }
       if (!this.asteroid_count) {
         this.new_level();
+      }
+      this.nuke_counter--;
+      if (canvasGames.keyboard.isPressed(13) && this.nuke_counter <= 0 && this.nuke_number) {
+        document.getElementById("nuke" + this.nuke_number).style.display = "none";
+        _ref = this.asteroids;
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          asteroid = _ref[_i];
+          asteroid.explode();
+        }
+        this.nuke_number--;
+        this.nuke_counter = 60;
       }
       return Ship.__super__.update.apply(this, arguments);
     };
