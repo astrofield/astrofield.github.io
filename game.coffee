@@ -143,6 +143,7 @@ class Ship extends Wrapper
         ASTEROID_NUMBER += ASTEROID_INCREMENT
         @first_asteroid = true
         @asteroid_count = ASTEROID_NUMBER
+        @asteroid_wait = LEVEL_DELAY
 
 canvas = document.getElementById 'canvas'
 

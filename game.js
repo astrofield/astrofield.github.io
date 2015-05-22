@@ -213,7 +213,8 @@
       this.level_ob.innerHTML = "Level " + this.level;
       ASTEROID_NUMBER += ASTEROID_INCREMENT;
       this.first_asteroid = true;
-      return this.asteroid_count = ASTEROID_NUMBER;
+      this.asteroid_count = ASTEROID_NUMBER;
+      return this.asteroid_wait = LEVEL_DELAY;
     };
 
     return Ship;
