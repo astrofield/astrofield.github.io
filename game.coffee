@@ -5,7 +5,8 @@ MISSILE_DELAY = 25
 MISSILE_BUFFER = 25
 ASTEROID_SPEED = 7
 ASTEROID_DELAY = 60
-ASTEROID_NUMBER = 10
+LEVEL_DELAY = 100
+ASTEROID_NUMBER = 5
 ASTEROID_INCREMENT = 5
 MISSILE_LIFE = 180
 BODY_PADDING = 8
@@ -64,9 +65,6 @@ class Missile extends Wrapper
                 @ship.score += SCORE_INCREMENT
                 @ship.score_ob.innerHTML = "Score: " + @ship.score
                 @ship.asteroid_count--
-                if not @ship.asteroid_count
-                #     @ship.new_level()
-                     5
                 return
         
         if not @life
@@ -77,10 +75,13 @@ class Ship extends Wrapper
         super SHIP_IMAGE, canvasGames.screen.width/2, canvasGames.screen.height-SHIP_IMAGE.height/2-180
 
         @missile_counter = 0
-        @asteroid_counter = ASTEROID_NUMBER
-        
-        @level = 1
-        
+        @asteroid_wait = LEVEL_DELAY
+        @asteroid_count = 0
+
+        @level = 0
+        @first_asteroid = True
+        @level_ob = document.getElementById("level")
+
         @score = 0
         @score_ob = document.getElementById("score")
         
@@ -102,12 +103,19 @@ class Ship extends Wrapper
             @missile_counter = MISSILE_DELAY
         
         #Asteroid Check
-        @asteroid_counter--
+        @asteroid_wait--
         
-        if @asteroid_counter <= 0
+        if @asteroid_wait <= 0
             @add_asteroid @
-            @asteroid_counter = ASTEROID_DELAY
-        
+            if @first_asteroid
+                @first_asteroid = false
+                @level_ob.style.display = "none"
+            @asteroid_wait = ASTEROID_DELAY
+       
+
+         if not @asteroid_count
+             @new_level()
+ 
         super
     
     add_missile: ->
@@ -127,6 +135,13 @@ class Ship extends Wrapper
             else
                 window.close()
         @life_ob.style.width = if @life>0 then @life * 2 else 0
+    
+    new_level: ->
+        @level_ob.style.display = "block"
+        @level_ob.innerHTML = "Level " + @level
+        ASTEROID_NUMBER += ASTEROID_INCREMENT
+        @first_asteroid = true
+        @asteroid_count = ASTEROID_NUMBER
 
 canvas = document.getElementById 'canvas'
 
