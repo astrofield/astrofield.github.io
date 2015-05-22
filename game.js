@@ -208,6 +208,7 @@
     };
 
     Ship.prototype.new_level = function() {
+      this.level++;
       this.level_ob.style.display = "block";
       this.level_ob.innerHTML = "Level " + this.level;
       ASTEROID_NUMBER += ASTEROID_INCREMENT;
