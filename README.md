@@ -6,6 +6,8 @@ A simple arcade shooter.
 
 Astro-Field is a simple arcade shooter for VGA-102. It is written in [coffescript](http://coffeescript.org), a language which compiles to javascript.
 
+Play it [here](http://astrofield.github.io)
+
 ##Instructions
 
 You have to protect the transports from the field of asteroids with your X-Wing fighter.
