@@ -20,3 +20,5 @@ You have to protect the transports from the field of asteroids with your X-Wing 
 6. When all health is lost, the game is over.
 7. The ship, asteroids, and missiles all wrap around the screen.
 8. The first level has 10 asteroids, the second 15, etc. and each level the game gets harder and faster.
+9. Press Enter to use a nuke and destroy all asteroids on the field, but be careful you only get 3 for the entire game.
+10. No points are received from asteroids destroyed by nukes.

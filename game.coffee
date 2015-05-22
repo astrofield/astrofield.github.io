@@ -154,6 +154,8 @@ class Ship extends Wrapper
         @life -= 5
         if not @life
             @destroy()
+            for asteroid in @asteroids
+                asteroid.destroy()
             alert "Game Over! You got #{@score} points!"
             if confirm "Play Again?"
                 document.location = "index.html"
@@ -169,6 +171,9 @@ class Ship extends Wrapper
         @first_asteroid = true
         @asteroid_count = ASTEROID_NUMBER
         @asteroid_wait = LEVEL_DELAY
+        ASTEROID_SPEED += 3
+        SHIP_SPEED += 2
+        MISSILE_SPEED = ASTEROID_SPEED * 4.286
 
 canvas = document.getElementById 'canvas'
 

@@ -235,9 +235,15 @@
     };
 
     Ship.prototype.lose_life = function() {
+      var asteroid, _i, _len, _ref;
       this.life -= 5;
       if (!this.life) {
         this.destroy();
+        _ref = this.asteroids;
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          asteroid = _ref[_i];
+          asteroid.destroy();
+        }
         alert("Game Over! You got " + this.score + " points!");
         if (confirm("Play Again?")) {
           document.location = "index.html";
@@ -255,7 +261,10 @@
       ASTEROID_NUMBER += ASTEROID_INCREMENT;
       this.first_asteroid = true;
       this.asteroid_count = ASTEROID_NUMBER;
-      return this.asteroid_wait = LEVEL_DELAY;
+      this.asteroid_wait = LEVEL_DELAY;
+      ASTEROID_SPEED += 3;
+      SHIP_SPEED += 2;
+      return MISSILE_SPEED = ASTEROID_SPEED * 4.286;
     };
 
     return Ship;
