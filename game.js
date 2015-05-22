@@ -99,6 +99,13 @@
       return Asteroid.__super__.update.apply(this, arguments);
     };
 
+    Asteroid.prototype.explode = function() {
+      this.destroy();
+      canvasGames.screen.addSprite(new Explosion(this.x, this.y));
+      EXPLOSION_SOUND.currentTime = 0;
+      return EXPLOSION_SOUND.play();
+    };
+
     return Asteroid;
 
   })(Wrapper);
@@ -121,10 +128,7 @@
         sprite = _ref[_i];
         if (sprite instanceof Asteroid) {
           this.destroy();
-          sprite.destroy();
-          canvasGames.screen.addSprite(new Explosion(this.x, this.y));
-          EXPLOSION_SOUND.currentTime = 0;
-          EXPLOSION_SOUND.play();
+          sprite.explode();
           this.ship.score += SCORE_INCREMENT;
           this.ship.score_ob.innerHTML = "Score: " + this.ship.score;
           this.ship.asteroid_count--;

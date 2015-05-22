@@ -46,6 +46,11 @@ class Asteroid extends Wrapper
 
         super
         
+    explode: ->
+        @destroy()
+        canvasGames.screen.addSprite(new Explosion @x, @y)
+        EXPLOSION_SOUND.currentTime = 0
+        EXPLOSION_SOUND.play()
 
 class Missile extends Wrapper
     constructor: (x, y, @ship) ->
@@ -59,10 +64,7 @@ class Missile extends Wrapper
         for sprite in @get_colliding_sprites()
             if sprite instanceof Asteroid
                 @destroy()
-                sprite.destroy()
-                canvasGames.screen.addSprite(new Explosion @x, @y)
-                EXPLOSION_SOUND.currentTime = 0
-                EXPLOSION_SOUND.play()
+                sprite.explode()
                 @ship.score += SCORE_INCREMENT
                 @ship.score_ob.innerHTML = "Score: " + @ship.score
                 @ship.asteroid_count--
