@@ -1,14 +1,21 @@
 <html>
 <head>
 <style>
-	#score {		
+    
+    @font-face {
+        font-family: space-age;
+        src: url(space-age.regular.ttf);
+    }
+
+	#score {
     		position: fixed;
 		right: 100;
 		top: 50;
-		color: blue;
+		color: white;
 		font-size: 30pt;
-		font-family: Sans-Serif;
-	//	text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+		font-family: space-age;
+        font-weight: 100;
+        text-shadow: 0 0 50px #0000FF, 2px 2px 50px #0000FF, -2px -2px 50px #0000FF, -2px 2px 50px #0000FF, 2px -2px 50px #0000FF;
 	}
 	
 	#level {
@@ -16,25 +23,48 @@
 		width: 100%;
 		text-align: center;
 		top: 200;
-		color: SkyBlue;
+		color: slategray;
 		font-size: 50pt;
-		font-family: Sans-Serif;
+		font-family: space-age;
 		display: none;
 	}
 
-        .nuke {
+    .nuke {
 		position: fixed;
 		bottom: 50px;
 		width: 30px;
 		height: 30px;
         }
+    
+    #life {
+        margin-left:100px;
+        position: fixed;
+        x: 50%;
+        top: 50;
+        background: lime;
+        width: 200px;
+        height: 30px;
+        border-radius: 10px 10px 5px 10px;
+    }
+    
+    #life-border {
+        margin-left:100px;
+        position: fixed;
+        x: 50%;
+        top: 50;
+        width: 195px;
+        height: 25px;
+        border: grey 5px solid;
+        border-radius: 10px;
+    }
+    
 </style>
 </head>
 
 <body>
     <div id="score">Score: 0</div>
-    <div id="life" style="margin-left:100px; position: fixed; x: 50%; top: 50; background: lime; width: 200px; height: 30px;"></div>
-    <div style="margin-left:100px; position: fixed; x: 50%; top: 50;width: 195px; height: 25px;border: red 5px solid;"></div>
+    <div id="life"></div>
+    <div id="life-border"></div>
     <div id="level">Level 1</div>
     <img src="nuke.png" class="nuke" id="nuke1" style="right: 50px;">
     <img src="nuke.png" class="nuke" id="nuke2" style="right: 105px;">

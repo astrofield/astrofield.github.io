@@ -152,6 +152,7 @@ class Ship extends Wrapper
 
     lose_life: ->
         @life -= 5
+        @life_ob.style.width = if @life>0 then @life * 2 else 0
         if not @life
             @destroy()
             for asteroid in @asteroids
@@ -161,7 +162,7 @@ class Ship extends Wrapper
                 document.location = "index.html"
             else
                 window.close()
-        @life_ob.style.width = if @life>0 then @life * 2 else 0
+        @life_ob.style['border-radius'] = "10px 0 0 10px"
     
     new_level: ->
         @level += 1
